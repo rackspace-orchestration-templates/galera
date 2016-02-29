@@ -1,0 +1,99 @@
+Cloud-init v. 0.7.5 running 'init-local' at Mon, 29 Feb 2016 15:25:15 +0000. Up 18.21 seconds.
+Cloud-init v. 0.7.5 running 'init' at Mon, 29 Feb 2016 15:25:15 +0000. Up 18.89 seconds.
+ci-info: ++++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++
+ci-info: +--------+------+-----------------+---------------+-------------------+
+ci-info: | Device |  Up  |     Address     |      Mask     |     Hw-Address    |
+ci-info: +--------+------+-----------------+---------------+-------------------+
+ci-info: |   lo   | True |    127.0.0.1    |   255.0.0.0   |         .         |
+ci-info: |  eth1  | True |  10.208.131.108 | 255.255.224.0 | bc:76:4e:06:11:6f |
+ci-info: |  eth0  | True | 162.242.144.213 | 255.255.255.0 | bc:76:4e:06:04:c0 |
+ci-info: +--------+------+-----------------+---------------+-------------------+
+ci-info: +++++++++++++++++++++++++++++++++Route info++++++++++++++++++++++++++++++++++
+ci-info: +-------+---------------+---------------+---------------+-----------+-------+
+ci-info: | Route |  Destination  |    Gateway    |    Genmask    | Interface | Flags |
+ci-info: +-------+---------------+---------------+---------------+-----------+-------+
+ci-info: |   0   |    0.0.0.0    | 162.242.144.1 |    0.0.0.0    |    eth0   |   UG  |
+ci-info: |   1   |   10.176.0.0  |  10.208.128.1 |  255.240.0.0  |    eth1   |   UG  |
+ci-info: |   2   |   10.208.0.0  |  10.208.128.1 |  255.240.0.0  |    eth1   |   UG  |
+ci-info: |   3   |  10.208.128.0 |    0.0.0.0    | 255.255.224.0 |    eth1   |   U   |
+ci-info: |   4   | 162.242.144.0 |    0.0.0.0    | 255.255.255.0 |    eth0   |   U   |
+ci-info: +-------+---------------+---------------+---------------+-----------+-------+
+2016-02-29 15:25:16,081 - util.py[WARNING]: Failed forking and calling callback NoneType
+Generating public/private rsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_rsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_rsa_key.pub.
+The key fingerprint is:
+78:2a:a5:e7:27:c3:d0:c8:1a:45:a7:bc:2f:07:29:88 root@one-click-build-test-1456759397-07
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|    . .          |
+|   o o           |
+|    +  .         |
+|.. o =o S        |
+|E o Bo.o         |
+|   +o=o          |
+|  . .+* .        |
+|     o.+         |
++-----------------+
+Generating public/private dsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_dsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_dsa_key.pub.
+The key fingerprint is:
+13:54:90:3f:73:78:66:ae:02:ba:25:36:39:21:6e:34 root@one-click-build-test-1456759397-07
+The key's randomart image is:
++--[ DSA 1024]----+
+|        o+.      |
+|       ..        |
+|        .. .     |
+|         .= =    |
+|  E .   S  O     |
+| o o o.  .  .    |
+|  o *...   .     |
+| . ..=  . .      |
+|    ..   .       |
++-----------------+
+Generating public/private ecdsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ecdsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_ecdsa_key.pub.
+The key fingerprint is:
+1c:e2:55:31:8e:ed:ad:47:a2:83:28:b8:16:79:e3:2a root@one-click-build-test-1456759397-07
+The key's randomart image is:
++--[ECDSA  256]---+
+|          +.     |
+|         = .     |
+|      . + o      |
+|     . + o .     |
+|  .   . S o o    |
+| + o . . . +     |
+|. = o . o . .    |
+|Eo o     . .     |
+|+..              |
++-----------------+
+Generating public/private ed25519 key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ed25519_key.
+Your public key has been saved in /etc/ssh/ssh_host_ed25519_key.pub.
+The key fingerprint is:
+af:64:88:b7:52:a8:6f:48:41:89:46:98:81:63:0d:84 root@one-click-build-test-1456759397-07
+The key's randomart image is:
++--[ED25519  256--+
+|BBo.             |
+|Eoo.             |
+|oo               |
+|  .              |
+|   . .  S        |
+|  . .... .       |
+| . o..o o .      |
+|  o o. + .       |
+|   o... .        |
++-----------------+
+Cloud-init v. 0.7.5 running 'modules:config' at Mon, 29 Feb 2016 15:25:17 +0000. Up 20.76 seconds.
+Generating locales...
+  en_US.UTF-8... up-to-date
+Generation complete.
+2016-02-29 15:25:18,795 - util.py[WARNING]: Failed to run debconf-set-selections for grub-dpkg
+Cloud-init v. 0.7.5 running 'modules:final' at Mon, 29 Feb 2016 15:25:19 +0000. Up 22.96 seconds.
+2016-02-29 15:25:19,932 - util.py[WARNING]: Failed running /var/lib/cloud/instance/scripts/userdata [-]
+2016-02-29 15:25:19,933 - cc_scripts_user.py[WARNING]: Failed to run module scripts-user (scripts in /var/lib/cloud/instance/scripts)
+2016-02-29 15:25:19,933 - util.py[WARNING]: Running scripts-user (<module 'cloudinit.config.cc_scripts_user' from '/usr/lib/python2.7/dist-packages/cloudinit/config/cc_scripts_user.pyc'>) failed
+Cloud-init v. 0.7.5 finished at Mon, 29 Feb 2016 15:25:19 +0000. Datasource DataSourceConfigDriveNet [net,ver=2][source=/dev/xvdd].  Up 23.08 seconds
