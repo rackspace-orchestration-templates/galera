@@ -6,27 +6,19 @@ description: |
   This stack is running the latest version of Galera 10.1.
 
 parameter_groups:
-  - label: Galera Settings
-    parameters:
-    - galera_user
-    - galera_database
-  - label: rax-dev-params
-    parameters:
-    - ansible_repo
-    - ansible_branch
-    - secondary_template
+- label: Galera Settings
+  parameters:
+  - galera_user
+  - galera_database
+- label: rax-dev-params
+  parameters:
+  - server_image
+  - secondary_template
+  - ansible_branch
+  - ansible_repo
 
 parameters:
   #Galera Customization
-  #Advanced Options
-  # server_image:
-  #   type: string
-  #   default: f4bbbce2-50b0-4b07-bf09-96c175a45f4b
-  #   label: Server Image
-  #   description: Image to be used for all servers in this stack
-  #   constraints:
-  #   - allowed_values:
-  #     - f4bbbce2-50b0-4b07-bf09-96c175a45f4b
   galera_user:
     type: string
     default: galera_user
@@ -56,15 +48,29 @@ parameters:
     description: Number of secondary web nodes
     constraints:
       - range: { min: 0, max: 10 }
-  ansible_branch:
+  server_image:
     type: string
-    default: stable
-  ansible_repo:
-    type: string
-    default: https://github.com/rackspace-orchestration-templates/ansible-roles.git
+    default: f4bbbce2-50b0-4b07-bf09-96c175a45f4b
+    label: Server Image
+    description: Image to use for WordPress
+    constraints:
+    - allowed_values:
+      - f4bbbce2-50b0-4b07-bf09-96c175a45f4b
   secondary_template:
     type: string
     default: https://raw.githubusercontent.com/rackspace-orchestration-templates/galera/master/galera-secondary.yaml
+    label: Secondary Template
+    description: Template to use for secondary servers
+  ansible_branch:
+    type: string
+    default: stable
+    label: Git Branch or Tag for Ansible Roles
+    description: The Ansible Roles will be pulled from Git, using the tag or branch provided
+  ansible_repo:
+    type: string
+    default: https://github.com/rackspace-orchestration-templates/ansible-roles.git
+    label: Git Repo for Ansible Roles
+    description: The Ansible Roles will be pulled from Git, using the repo provided
 
 resources:
   root_pass:
@@ -91,10 +97,10 @@ resources:
           template: |
             #!/bin/bash
             set -e
-            git clone -b 'ansible_branch' --single-branch --progress ansible_repo /etc/ansible/roles > $heat_outputs_path.results 2>&1
+            git clone -b 'tag' --single-branch --progress repository /etc/ansible/roles > $heat_outputs_path.results 2>&1
           params:
-            ansible_branch: { get_param: ansible_branch }
-            ansible_repo: { get_param: ansible_repo }
+            tag: { get_param: ansible_branch}
+            repository: { get_param: ansible_repo }
   galera_config:
     type: OS::Heat::SoftwareConfig
     properties:
@@ -231,9 +237,7 @@ resources:
     type: OS::Nova::Server
     properties:
       name: { get_param: "OS::stack_name" }
-#      image: { get_param: server_image }
-#      image: fcbdef81-a2cd-49c0-8228-322385d1cb10
-      image: d55bbde7-5710-4efe-9e68-436563002806
+      image: { get_param: server_image }
       flavor: { get_param: server_flavor }
       key_name: { get_resource: ssh_key }
       software_config_transport: POLL_TEMP_URL
@@ -252,9 +256,7 @@ resources:
         properties:
           ssh_key: { get_resource: ssh_key }
           parent_stack_id: { get_param: "OS::stack_id" }
-#          server_image: { get_param: server_image }
-          server_image: d55bbde7-5710-4efe-9e68-436563002806
-#          server_image: f4bbbce2-50b0-4b07-bf09-96c175a45f4b
+          server_image: { get_param: server_image }
           server_flavor: { get_param: server_flavor }
           ansible_branch: { get_param: ansible_branch }
           ansible_repo: { get_param: ansible_repo }
