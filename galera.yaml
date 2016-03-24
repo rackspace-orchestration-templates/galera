@@ -58,7 +58,7 @@ parameters:
       - f4bbbce2-50b0-4b07-bf09-96c175a45f4b
   secondary_template:
     type: string
-    default: https://raw.githubusercontent.com/rackspace-orchestration-templates/galera/master/galera-secondary.yaml
+    default: https://raw.githubusercontent.com/rackspace-orchestration-templates/galera/stable/galera-secondary.yaml
     label: Secondary Template
     description: Template to use for secondary servers
   ansible_branch:
