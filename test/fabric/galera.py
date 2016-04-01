@@ -3,19 +3,6 @@ from fabric.api import env, run, hide, task
 from envassert import detect, file, port, process, service, user
 from hot.utils.test import get_artifacts
 
-def verifyGalera():
-  import MySQLdb
-  dbConnect = MySQLdb.connect(read_default_file="~/.my.cnf")
-  dbConnect.query("SHOW STATUS LIKE 'wsrep%'")
-  results = dbConnect.store_result()
-  resultsList = results.fetch_row(maxrows=0, how=1)
-
-  for result in resultsList:
-    if result['Variable_name'] == 'wsrep_evs_state':
-      assert result['Value'] == "OPERATIONAL", 'Cluster is not ready'
-    if result['Variable_name'] == 'wsrep_local_state_comment':
-      assert result['Value'] == "Synced", 'Cluster is not synced'
-
 @task
 def check():
   env.platform_family = detect.detect()
