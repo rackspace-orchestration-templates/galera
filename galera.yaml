@@ -14,8 +14,7 @@ parameter_groups:
   parameters:
   - server_image
   - secondary_template
-  - ansible_branch
-  - ansible_repo
+  - ansible_source
 
 parameters:
   #Galera Customization
