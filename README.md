@@ -18,10 +18,6 @@ By default, the "root" MySQL user can only connect from localhost (127.0.0.1).
 You will need to connect to the server and use the MySQL client in order to
 allow "root" to connect from external servers.
 
-As a part of your server configuration, your server will be configured to run
-nightly backups leveraging
-[Holland](https://github.com/holland-backup/holland#readme).  Backups will be
-stored in the directory /var/lib/mysqlbackups directory on the master node.
 #### Logging in via SSH
 The private key provided in the passwords section can be used to login as
 root via SSH. We have an article on how to use these keys with [Mac OS X and
@@ -80,12 +76,12 @@ Outputs
 Once a stack comes online, use `heat output-list` to see all available outputs.
 Use `heat output-show <OUTPUT NAME>` to get the value of a specific output.
 
-* `galera_public_ip`: Master IP 
-* `galera_password`: Galera Root Password 
-* `galera_user_password`: Galera Password 
-* `galera_user`: Galera User 
-* `ssh_private_key`: SSH Private Key 
-* `secondary_ips`: Secondary Node IPs 
+* `galera_public_ip`: Master IP
+* `galera_password`: Galera Root Password
+* `galera_user_password`: Galera Password
+* `galera_user`: Galera User
+* `ssh_private_key`: SSH Private Key
+* `secondary_ips`: Secondary Node IPs
 
 For multi-line values, the response will come in an escaped form. To get rid of
 the escapes, use `echo -e '<STRING>' > file.txt`. For vim users, a substitution
